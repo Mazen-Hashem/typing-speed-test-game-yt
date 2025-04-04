@@ -1,0 +1,613 @@
+/* start global rules */
+* {
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+ul {
+  list-style: none;
+}
+
+input, button {
+  outline: none;
+}
+
+a {
+  text-decoration: none;
+}
+/* end global rules */
+
+main {
+  width: 100%;
+  min-height: calc(100vh - 43px);
+  padding: 10px;
+  background-color: rgb(30, 30, 30);
+}
+
+
+
+/* head_container */
+main .head_container {
+  padding: 20px 10px;
+  background-color: rgb(34, 65, 66);
+}
+
+
+main .head_container .game_title {
+  width: fit-content;
+  margin: auto;
+  font-size: 30px;
+  color: white;
+  text-align: center;
+}
+
+
+
+main section {
+  max-width: 600px;
+  margin: 10px auto 0;
+}
+
+
+
+/* control_container */
+main section .control_container {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+  background-color: black;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3),
+              -2px -2px 20px rgba(0, 0, 0, 0.3),
+              inset 2px 2px 15px rgba(255, 255, 255, 0.3),
+              inset -2px -2px 15px rgba(255, 255, 255, 0.3);
+  text-align: center;
+}
+
+
+main section .control_container .text {
+  display: inline-block;
+  color: white;
+  font-size: 16px;
+}
+
+main section .control_container .chosen {
+  color: rgb(30, 144, 150);
+  font-size: 16px;
+}
+main section .control_container .chosen::before {
+  content: "[";
+  margin-right: 2px;
+  color: rgb(30, 144, 150);
+}
+main section .control_container .chosen::after {
+  content: "]";
+  margin-left: 2px;
+  color: rgb(30, 144, 150);
+}
+
+main section .control_container .chosen_option {
+  pointer-events: none;
+  cursor: pointer;
+}
+main section .control_container .active_chosen_option {
+  pointer-events: all;
+}
+
+main section .control_container .options_box {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: fit-content;
+  padding: 10px;
+  background-color: black;
+  overflow-y: hidden;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3),
+              -2px -2px 20px rgba(0, 0, 0, 0.3),
+              inset 2px 2px 15px rgba(255, 255, 255, 0.3),
+              inset -2px -2px 15px rgba(255, 255, 255, 0.3);
+}
+main section .control_container .active_options_box {
+  display: block;
+}
+
+main section .control_container .options_box .options_title {
+  color: white;
+  font-size: 16px;
+}
+
+main section .control_container .options_box .options_list {
+  height: 81px;
+  margin-top: 10px;
+  overflow-y: auto;
+}
+
+main section .control_container .options_box .options_list .option_item {
+  position: relative;
+  z-index: 1;
+  padding: 5px 10px;
+  color: rgb(30, 144, 150);
+  font-size: 14px;
+  cursor: pointer;
+}
+main section .control_container .options_box .options_list .option_item:hover::before,
+main section .control_container .options_box .options_list .option_item:hover::after {
+  width: 50%;
+}
+main section .control_container .options_box .options_list .option_item::before,
+main section .control_container .options_box .options_list .option_item::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  z-index: -1;
+  width: 0;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  transition: width 0.3s;
+}
+main section .control_container .options_box .options_list .option_item::before {
+  left: 50%;
+}
+main section .control_container .options_box .options_list .option_item::after {
+  right: 50%;
+}
+main section .control_container .options_box .options_list .active_option_item::before,
+main section .control_container .options_box .options_list .active_option_item::after {
+  width: 50%;
+}
+
+
+
+/* info_container */
+main section .info_container {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3),
+              -2px -2px 20px rgba(0, 0, 0, 0.3),
+              inset 2px 2px 15px rgba(255, 255, 255, 0.3),
+              inset -2px -2px 15px rgba(255, 255, 255, 0.3);
+}
+
+
+main section .info_container .box {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+main section .info_container .box .text {
+  color: white;
+  font-size: 16px;
+}
+
+main section .info_container .box .number {
+  color: rgb(30, 144, 150);
+  font-size: 16px;
+}
+
+
+
+/* start_container */
+main section .start_container {
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+main section .start_container .start_game_btn {
+  display: none;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(34, 65, 66);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+main section .start_container .start_game_btn:hover {
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3),
+              -2px -2px 20px rgba(0, 0, 0, 0.3);
+}
+main section .start_container .start_game_btn:active {
+  box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3),
+              -1px -1px 5px rgba(255, 255, 255, 0.3);
+}
+main section .start_container .active_start_game_btn {
+  display: block;
+}
+
+main section .start_container .current_word {
+  display: none;
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(34, 65, 66);
+  color: white;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 1px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3),
+              -2px -2px 20px rgba(0, 0, 0, 0.3);
+}
+main section .start_container .active_current_word {
+  display: block;
+}
+
+
+
+/* input_container */
+main section .input_container {
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+main section .input_container .main_input {
+  width: 100%;
+  padding: 10px;
+  border: 3px solid rgb(34, 65, 66);
+  background-color: white;
+  color: black;
+  caret-color: rgb(30, 144, 150);
+  text-align: center;
+  font-size: 18px;
+  pointer-events: none;
+  box-shadow: inset 2px 2px 20px rgba(0, 0, 0, 0.5),
+              inset -2px -2px 20px rgba(0, 0, 0, 0.5);
+}
+main section .input_container .active_main_input {
+  pointer-events: all;
+}
+
+
+
+/* words_container */
+main section .words_container {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 3px solid rgb(34, 65, 66);
+  background-color: black;
+  text-align: center;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5),
+              -2px -2px 20px rgba(0, 0, 0, 0.5);
+}
+
+
+main section .words_container .text {
+  display: none;
+  color: white;
+  font-size: 16px;
+}
+main section .words_container .active_text {
+  display: block;
+}
+
+main section .words_container .words_box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+main section .words_container .words_box .word {
+  padding: 5px;
+  background-color: rgb(34, 65, 66);
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+main section .words_container .words_box .active_word {
+  background-color: rgb(30, 144, 150);
+}
+main section .words_container .words_box .hide_word {
+  display: none;
+}
+
+
+
+/* result_container */
+main section .result_container {
+  display: none;
+  margin-top: 20px;
+  text-align: center;
+}
+main section .active_result_container {
+  display: block;
+}
+
+
+main section .result_container .result {
+  font-size: 30px;
+  font-weight: bold;
+}
+main section .result_container .result_lost_clr {
+  color: rgb(255, 0, 0);
+}
+main section .result_container .result_won_clr {
+  color: rgb(0, 255, 0);
+}
+
+main section .result_container .reset_btn {
+  padding: 10px 20px;
+  margin-top: 20px;
+  background-color: rgb(34, 65, 66);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: box-shadow 0.3s;
+}
+main section .result_container .reset_btn:hover {
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.3),
+              -2px -2px 20px rgba(0, 0, 0, 0.3);
+}
+main section .result_container .reset_btn:active {
+  box-shadow: 1px 1px 5px rgba(255, 255, 255, 0.3),
+              -1px -1px 5px rgba(255, 255, 255, 0.3);
+}
+
+
+@media (max-width: 767px) {
+  main {
+    min-height: calc(100vh - 38px);
+    padding: 5px;
+  }
+  
+  
+  
+  /* head_container */
+  main .head_container {
+    padding: 10px 5px;
+  }
+  
+  
+  main .head_container .game_title {
+    font-size: 20px;
+  }
+  
+  
+  
+  main section {
+    margin: 5px auto 0;
+  }
+  
+  
+  
+  /* control_container */
+  main section .control_container {
+    padding: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3),
+                -2px -2px 10px rgba(0, 0, 0, 0.3),
+                inset 2px 2px 10px rgba(255, 255, 255, 0.3),
+                inset -2px -2px 10px rgba(255, 255, 255, 0.3);
+  }
+  
+  
+  main section .control_container .text {
+    font-size: 14px;
+  }
+  
+  main section .control_container .chosen {
+    font-size: 14px;
+  }
+  
+  main section .control_container .options_box {
+    padding: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3),
+                -2px -2px 10px rgba(0, 0, 0, 0.3),
+                inset 2px 2px 10px rgba(255, 255, 255, 0.3),
+                inset -2px -2px 10px rgba(255, 255, 255, 0.3);
+  }
+  
+  main section .control_container .options_box .options_title {
+    font-size: 14px;
+  }
+  
+  main section .control_container .options_box .options_list {
+    height: 63px;
+    margin-top: 5px;
+  }
+  
+  main section .control_container .options_box .options_list .option_item {
+    padding: 3px 6px;
+    font-size: 12px;
+  }
+  
+  
+  
+  /* info_container */
+  main section .info_container {
+    padding: 5px;
+    margin-top: 5px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3),
+                -2px -2px 10px rgba(0, 0, 0, 0.3),
+                inset 2px 2px 10px rgba(255, 255, 255, 0.3),
+                inset -2px -2px 10px rgba(255, 255, 255, 0.3);
+  }
+  
+  
+  main section .info_container .box {
+    gap: 3px;
+  }
+  
+  main section .info_container .box .text {
+    font-size: 14px;
+  }
+  
+  main section .info_container .box .number {
+    font-size: 14px;
+  }
+  
+  
+  
+  /* start_container */
+  main section .start_container {
+    margin-top: 5px;
+  }
+  
+  
+  main section .start_container .start_game_btn {
+    padding: 5px;
+    font-size: 14px;
+  }
+  main section .start_container .start_game_btn:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3),
+                -2px -2px 10px rgba(0, 0, 0, 0.3);
+  }
+  main section .start_container .start_game_btn:active {
+    box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3),
+                -1px -1px 3px rgba(255, 255, 255, 0.3);
+  }
+  
+  main section .start_container .current_word {
+    padding: 5px;
+    font-size: 16px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3),
+                -2px -2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  
+  
+  /* input_container */
+  main section .input_container {
+    margin-top: 5px;
+  }
+  
+  
+  main section .input_container .main_input {
+    padding: 5px;
+    border: 2px solid rgb(34, 65, 66);
+    font-size: 16px;
+    box-shadow: inset 2px 2px 10px rgba(0, 0, 0, 0.5),
+                inset -2px -2px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  
+  
+  /* words_container */
+  main section .words_container {
+    padding: 5px;
+    margin-top: 5px;
+    border: 2px solid rgb(34, 65, 66);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5),
+                -2px -2px 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  
+  main section .words_container .text {
+    font-size: 14px;
+  }
+  
+  main section .words_container .words_box {
+    gap: 3px;
+  }
+  
+  main section .words_container .words_box .word {
+    padding: 3px;
+    font-size: 12px;
+    border-radius: 3px;
+  }
+  
+  
+  
+  /* result_container */
+  main section .result_container {
+    margin-top: 10px;
+  }
+  
+  
+  main section .result_container .result {
+    font-size: 20px;
+  }
+  
+  main section .result_container .reset_btn {
+    padding: 5px 10px;
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  main section .result_container .reset_btn:hover {
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3),
+                -2px -2px 10px rgba(0, 0, 0, 0.3);
+  }
+  main section .result_container .reset_btn:active {
+    box-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3),
+                -1px -1px 3px rgba(255, 255, 255, 0.3);
+  }
+}
+
+
+/* footer */
+footer {
+  padding: 10px;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+footer .copy_right p {
+  font-size: 16px;
+}
+
+footer .copy_right p span {
+  font-size: 20px;
+  color: rgb(30, 144, 150);
+}
+
+@media (max-width: 767px) {
+  footer .copy_right p {
+    font-size: 12px;
+  }
+  
+  footer .copy_right p span {
+    font-size: 16px;
+  }
+}
+
+
+.stop_msg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: red;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  font-size: 100px;
+  font-weight: bold;
+}
+.active_stop_msg {
+  display: flex;
+}
+
+@media (max-width: 767px) {
+  .stop_msg {
+    font-size: 50px;
+  }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Typing Speed Test Game</title>
+  <link rel="stylesheet" href="static/style/style.css">
+</head>
+<body>
+  <main>
+    <div class="head_container">
+      <h1 class="game_title">Typing Speed Test</h1>
+    </div>
+    
+    <section>
+      <div class="control_container">
+        <p class="text">You are playing on</p>
+        <span class="chosen_option chosen active_chosen_option"></span>
+        <p class="text">level & you have</p>
+        <span class="chosen_words chosen"></span>
+        <p class="text">words and</p>
+        <span class="chosen_timer chosen"></span>
+        <p class="text">seconds to type each word</p>
+        <div class="options_box">
+          <h2 class="options_title">Choose level</h2>
+          <ul class="options_list"></ul>
+        </div>
+      </div>
+  
+      <div class="info_container">
+        <div class="timer_box box">
+          <p class="text">Time Left:</p>
+          <p class="timer number">0</p>
+          <p class="text">Seconds</p>
+        </div>
+        <div class="score_box box">
+          <p class="text">Score:</p>
+          <p class="current_word_numb number">0</p>
+          <p class="text">From</p>
+          <p class="total_words_numb number">0</p>
+        </div>
+      </div>
+  
+      <div class="start_container">
+        <button class="start_game_btn active_start_game_btn">Start Playing</button>
+        <p class="current_word"></p>
+      </div>
+  
+      <div class="input_container">
+        <input class="main_input" type="text">
+      </div>
+  
+      <div class="words_container">
+        <p class="text active_text">Words will show here</p>
+        <div class="words_box"></div>
+      </div>
+  
+      <div class="result_container">
+        <p class="result"></p>
+        <button class="reset_btn">Reset</button>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="copy_right">
+      <p>&copy; 2025 <span>Mazen Hashem</span> All Right Reserved</p>
+    </div>
+  </footer>
+
+  <div class="stop_msg">LOCKED</div>
+  
+  <script src="dynamic/index.js"></script>
+</body>
+</html>
